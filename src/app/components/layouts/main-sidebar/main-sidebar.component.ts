@@ -6,11 +6,11 @@ import { MenuPipe } from '../../../pipes/menu.pipe';
 import { AuthService } from '../../../services/auth.service';
 
 @Component({
-  selector: 'app-main-sidebar',
-  standalone: true,
-  imports: [RouterLink, RouterLinkActive, FormsModule, MenuPipe],
-  templateUrl: './main-sidebar.component.html',
-  styleUrl: './main-sidebar.component.css'
+    selector: 'app-main-sidebar',
+    standalone:true,
+    imports: [RouterLink, RouterLinkActive, FormsModule, MenuPipe],
+    templateUrl: './main-sidebar.component.html',
+    styleUrl: './main-sidebar.component.css'
 })
 export class MainSidebarComponent {
   search: string = "";

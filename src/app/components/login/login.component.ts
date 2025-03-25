@@ -7,11 +7,10 @@ import { Router } from '@angular/router';
 import { SwalService } from '../../services/swal.service';
 
 @Component({
-  selector: 'app-login',
-  standalone: true,
-  imports: [SharedModule],
-  templateUrl: './login.component.html',
-  styleUrl: './login.component.css'
+    selector: 'app-login',
+    imports: [SharedModule],
+    templateUrl: './login.component.html',
+    styleUrl: './login.component.css'
 })
 export class LoginComponent {
   model: LoginModel = new LoginModel();

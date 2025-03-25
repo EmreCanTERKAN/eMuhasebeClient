@@ -7,11 +7,11 @@ import { SwalService } from '../../services/swal.service';
 import { NgForm } from '@angular/forms';
 
 @Component({
-  selector: 'app-users',
-  standalone: true,
-  imports: [SharedModule, UserPipe],
-  templateUrl: './users.component.html',
-  styleUrl: './users.component.css'
+    selector: 'app-users',
+    standalone: true,
+    imports: [SharedModule,UserPipe],
+    templateUrl: './users.component.html',
+    styleUrl: './users.component.css'
 })
 export class UsersComponent {
   users: UserModel[] = [];

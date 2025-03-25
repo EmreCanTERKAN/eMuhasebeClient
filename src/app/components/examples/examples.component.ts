@@ -7,11 +7,10 @@ import { SwalService } from '../../services/swal.service';
 import { NgForm } from '@angular/forms';
 
 @Component({
-  selector: 'app-examples',
-  standalone: true,
-  imports: [SharedModule, ExamplePipe],
-  templateUrl: './examples.component.html',
-  styleUrl: './examples.component.css'
+    selector: 'app-examples',
+    imports: [SharedModule, ExamplePipe],
+    templateUrl: './examples.component.html',
+    styleUrl: './examples.component.css'
 })
 export class ExamplesComponent {
   examples: ExampleModel[] = [];

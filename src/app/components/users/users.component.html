@@ -1,4 +1,4 @@
-<app-blank pageName="Kullanıcılar" [routes]="['Kullanıcılar']">
+<app-blank pageName="Kullanıcılar" [routes]="['Admin','Kullanıcılar']">
     <app-section sectionTitle="Kullanıcı Listesi">
         <div class="form-group row">
             <div class="col-9">
@@ -85,7 +85,7 @@
 
                     <div class="form-group mt-2">
                         <label>Şifre</label>
-                        <input type="password" required minlength="3" [(ngModel)]="createModel.password" class="form-control" name="password">
+                        <input type="password" required  [(ngModel)]="createModel.password" class="form-control" name="password">
                         <div class="invalid-feedback"></div>
                     </div> 
 
@@ -136,7 +136,7 @@
 
                     <div class="form-group mt-2">
                         <label>Şifre</label>
-                        <input type="password" required minlength="3" [(ngModel)]="updateModel.password" class="form-control" name="updatePassword">
+                        <input type="password" required [(ngModel)]="updateModel.password" class="form-control" name="updatePassword">
                         <div class="invalid-feedback"></div>
                     </div> 
 
