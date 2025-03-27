@@ -72,4 +72,12 @@ export class CompaniesComponent {
     }
   }
 
+  migrateAll(){
+    this.swal.callSwal("Tüm Databaseleri Güncelle?","Tüm şirketlerin databaselerini güncellemek üzeresiniz.",() => {
+      this.http.post<string>("Companies/MigrateAll", {}, (res)=> {
+        this.swal.callToast(res);
+      });
+    },"Güncelle")
+  }
+
 }
