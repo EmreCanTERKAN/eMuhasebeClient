@@ -1,0 +1,20 @@
+export class CurrencyTypeModel{
+    name : string = "";
+    value: number = 1;
+}
+
+export const CurrenyTypes : CurrencyTypeModel[] = [
+    {
+        name: "TL",
+        value : 1
+    },
+    {
+        name: "USD",
+        value : 2,        
+    },
+    {
+        name: "EUR",
+        value : 3,        
+    }
+]
+    
