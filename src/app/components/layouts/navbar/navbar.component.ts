@@ -28,8 +28,6 @@ export class NavbarComponent {
     this.http.post<LoginResponseModel>("Auth/ChangeCompany", {companyId: this.auth.user.companyId}, (res)=> {
       localStorage.clear();
       localStorage.setItem("token",res.token);
-
-
       document.location.reload();
     });
   }
