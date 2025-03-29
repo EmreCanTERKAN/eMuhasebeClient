@@ -6,10 +6,11 @@ import { HttpService } from '../../services/http.service';
 import { SwalService } from '../../services/swal.service';
 import { NgForm } from '@angular/forms';
 import { CurrenyTypes } from '../../models/currency-type.model';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-cash-registers',
-  imports: [SharedModule,CashRegisterPipe],
+  imports: [SharedModule,CashRegisterPipe,RouterLink],
   templateUrl: './cash-registers.component.html',
   styleUrl: './cash-registers.component.css'
 })
