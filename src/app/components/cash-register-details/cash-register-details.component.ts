@@ -82,7 +82,7 @@ export class CashRegisterDetailsComponent {
   }
 
   deleteById(model: CashRegisterDetailModel){
-    this.swal.callSwal("Hasa hareketini Sil?",`${model.date} tarihteki ${model.description} açıklamalı hareketi silmek istiyor musunuz?`,()=> {
+    this.swal.callSwal("Kasa hareketini Sil?",`${model.date} tarihteki ${model.description} açıklamalı hareketi silmek istiyor musunuz?`,()=> {
       this.http.post<string>("CashRegisterDetails/DeleteById",{id: model.id},(res)=> {
         this.getAll();
         this.swal.callToast(res,"info");

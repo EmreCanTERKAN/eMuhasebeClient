@@ -1,11 +1,11 @@
-<app-blank pageName="Kasalar" [routes]="['Kayıtlar','Kasalar']">
-    <app-section sectionTitle="Kasa Listesi">
+<app-blank pageName="Kasalar" [routes]="['Kayıtlar','Bankalar']">
+    <app-section sectionTitle="Banka Listesi">
         
         <div class="form-group row">
             <div class="col-9">
                 <button class="btn btn-dark" data-toggle="modal" data-target="#createModal">
                     <i class="fa-solid fa-plus me-1"></i>
-                    Kasa Ekle
+                    Banka Ekle
                 </button>
             </div>
 
@@ -19,7 +19,8 @@
                 <thead>
                     <tr>
                         <th>#</th>
-                        <th>Kasa Adı</th>
+                        <th>Banka Adı</th>
+                        <th>IBAN</th>
                         <th>Döviz Tipi</th>
                         <th>Giriş</th>
                         <th>Çıkış</th>
@@ -28,10 +29,11 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @for(data of cashRegisters | cashRegister: search ;track data){
+                    @for(data of banks | bank: search ;track data){
                     <tr>
                         <td>{{$index + 1}}</td>
                         <td>{{data.name}}</td>
+                        <td>{{data.iban}}</td>
                         <td>{{data.currencyType.name}}</td>
                         <td>{{data.depositAmount | trCurrency: changeCurrencyNameToSymbol(data.currencyType.name): true}}</td>
                         <td>{{data.withdrawalAmount | trCurrency: changeCurrencyNameToSymbol(data.currencyType.name): true}}</td>
@@ -41,7 +43,7 @@
                             </span>                            
                         </td>
                         <td>
-                            <button class="btn btn-dark btn-sm me-1" routerLink="/cash-registers/details/{{data.id}}">
+                            <button class="btn btn-dark btn-sm me-1" routerLink="/banks/details/{{data.id}}">
                                 <i class="fa-regular fa-file-lines me-1"></i>
                                 Detaylar
                             </button>
@@ -65,7 +67,7 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h3 class="modal-title fs-5">Kasa Ekleme Formu</h3>
+                <h3 class="modal-title fs-5">Banka Ekleme Formu</h3>
                 <button type="button" #createModalCloseBtn class="btn btn-outline-danger" data-dismiss="modal">
                     <i class="fa-solid fa-x"></i>
                 </button>
@@ -73,8 +75,14 @@
             <form formValidate #createForm="ngForm" autocomplete="off" (ngSubmit)="create(createForm)">
                 <div class="modal-body">
                     <div class="form-group">
-                        <label>Kasa Adı</label>
+                        <label>Banka Adı</label>
                         <input type="text" required minlength="3" [(ngModel)]="createModel.name" class="form-control" name="name">
+                        <div class="invalid-feedback"></div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>IBAN</label>
+                        <input type="text" required minlength="26"  maxlength="26" [(ngModel)]="createModel.iban" class="form-control" name="iban">
                         <div class="invalid-feedback"></div>
                     </div>
                     
@@ -104,7 +112,7 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h3 class="modal-title fs-5">Kasa Güncelleme Formu</h3>
+                <h3 class="modal-title fs-5">Banka Güncelleme Formu</h3>
                 <button type="button" #updateModalCloseBtn class="btn btn-outline-danger" data-dismiss="modal">
                     <i class="fa-solid fa-x"></i>
                 </button>
@@ -112,14 +120,20 @@
             <form formValidate #updateForm="ngForm" autocomplete="off" (ngSubmit)="update(updateForm)">
                 <div class="modal-body">
                     <div class="form-group">
-                        <label>Kasa Adı</label>
+                        <label>Banka Adı</label>
                         <input type="text" required minlength="3" [(ngModel)]="updateModel.name" class="form-control" name="updateName">
+                        <div class="invalid-feedback"></div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>IBAN</label>
+                        <input type="text" required minlength="26"  maxlength="26" [(ngModel)]="updateModel.iban" class="form-control" name="updateIban">
                         <div class="invalid-feedback"></div>
                     </div>
                     
                     <div class="form-group mt-2">
                         <label>Döviz Tipi</label>
-                        <select class="form-control" name="updateCurrencyType" [(ngModel)]="updateModel.currencyTypeValue" required>
+                        <select class="form-control" name="currencyType" [(ngModel)]="createModel.currencyTypeValue" required>
                             @for(type of currencyTypes; track type){
                                 <option [value]="type.value">
                                     {{type.name}}
