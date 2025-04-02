@@ -1,16 +1,17 @@
 import { Component, ElementRef, ViewChild } from '@angular/core';
-import { CashRegisterModel } from '../../models/cash-register.model';
 import { SharedModule } from '../../modules/shared.module';
 import { CashRegisterPipe } from '../../pipes/cash-register.pipe';
+import { CashRegisterModel } from '../../models/cash-register.model';
 import { HttpService } from '../../services/http.service';
 import { SwalService } from '../../services/swal.service';
 import { NgForm } from '@angular/forms';
-import { CurrenyTypes } from '../../models/currency-type.model';
 import { RouterLink } from '@angular/router';
+import { CurrenyTypes } from '../../models/currency-type.model';
 
 @Component({
   selector: 'app-cash-registers',
-  imports: [SharedModule,CashRegisterPipe,RouterLink],
+  standalone: true,
+  imports: [SharedModule, CashRegisterPipe, RouterLink],
   templateUrl: './cash-registers.component.html',
   styleUrl: './cash-registers.component.css'
 })
@@ -41,7 +42,7 @@ export class CashRegistersComponent {
     });
   }
 
-  create(form: NgForm){
+  create(form: NgForm){    
     if(form.valid){
       this.http.post<string>("CashRegisters/Create",this.createModel,(res)=> {
         this.swal.callToast(res);
@@ -76,10 +77,10 @@ export class CashRegistersComponent {
     }
   }
 
-  changeCurrencyNameToSymbol(name : string){
+  changeCurrencyNameToSymbol(name: string){
     if(name === "TL") return "₺";
     else if(name === "USD") return "$";
-    else if (name === "EUR") return "£";
+    else if(name === "EURO") return "€";
     else return "";
   }
 }

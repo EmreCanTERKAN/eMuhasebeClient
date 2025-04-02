@@ -1,16 +1,17 @@
 import { Component, ElementRef, ViewChild } from '@angular/core';
-import { BankModel } from '../../models/bank.model';
 import { SharedModule } from '../../modules/shared.module';
 import { BankPipe } from '../../pipes/bank.pipe';
 import { RouterLink } from '@angular/router';
-import { CurrenyTypes } from '../../models/currency-type.model';
+import { BankModel } from '../../models/bank.model';
 import { HttpService } from '../../services/http.service';
 import { SwalService } from '../../services/swal.service';
 import { NgForm } from '@angular/forms';
+import { CurrenyTypes } from '../../models/currency-type.model';
 
 @Component({
   selector: 'app-banks',
-  imports: [SharedModule,BankPipe,RouterLink],
+  standalone: true,
+  imports: [SharedModule, BankPipe, RouterLink],
   templateUrl: './banks.component.html',
   styleUrl: './banks.component.css'
 })
@@ -41,7 +42,7 @@ export class BanksComponent {
     });
   }
 
-  create(form: NgForm){
+  create(form: NgForm){    
     if(form.valid){
       this.http.post<string>("Banks/Create",this.createModel,(res)=> {
         this.swal.callToast(res);
@@ -53,7 +54,7 @@ export class BanksComponent {
   }
 
   deleteById(model: BankModel){
-    this.swal.callSwal("Bankayı Sil?",`${model.name} bankayı silmek istiyor musunuz?`,()=> {
+    this.swal.callSwal("Bankayı Sil?",`${model.name} bankasını silmek istiyor musunuz?`,()=> {
       this.http.post<string>("Banks/DeleteById",{id: model.id},(res)=> {
         this.getAll();
         this.swal.callToast(res,"info");
@@ -76,11 +77,10 @@ export class BanksComponent {
     }
   }
 
-  changeCurrencyNameToSymbol(name : string){
+  changeCurrencyNameToSymbol(name: string){
     if(name === "TL") return "₺";
     else if(name === "USD") return "$";
-    else if (name === "EUR") return "£";
+    else if(name === "EURO") return "€";
     else return "";
   }
 }
-

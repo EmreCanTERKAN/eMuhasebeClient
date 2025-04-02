@@ -17,7 +17,12 @@ export class ErrorService {
     switch (err.status) {
       case 0:
         this.swal.callToast("API adresine ulaşılamıyor","error");
-        break;        
+        break;
+        
+      case 400:
+      this.swal.callToast("Gönderilen parametrelerden biri eksik","error");
+      break;
+
       
       case 403:
         let errorMessage = "";
