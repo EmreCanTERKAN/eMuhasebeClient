@@ -11,7 +11,7 @@ export class BankPipe implements PipeTransform {
     
         return value.filter(p=> 
           p.name.toLocaleLowerCase().includes(search.toLocaleLowerCase()) ||
-          p.name.includes(search) 
+          p.iban.includes(search) 
         );
       }
 
