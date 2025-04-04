@@ -11,10 +11,12 @@ export class BankDetailModel{
     withdrawalAmount: number = 0;
     bankDetailId: string = "";  
     cashRegisterDetailId:string = "";
+    customerDetailId : string = "";
     oppositeCashRegisterId: string | any = "";
     oppositeBankId: string | any = "";    
     oppositeBank: BankModel = new BankModel();
     oppositeCash: CashRegisterModel = new CashRegisterModel();
+    oppositeCustomerId: string | any = "";
     description: string = "";
     oppositeAmount: number = 0;
     recordType: number = 0;
