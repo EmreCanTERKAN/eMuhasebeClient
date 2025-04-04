@@ -12,7 +12,7 @@ export class CustomerModel{
     taxNumber: string = "";
     depositAmount: number = 0;
     withdrawalAmount: number = 0;
-    details: CustomerDetailModel[] = [];
+    customerDetails: CustomerDetailModel[] = [];
 }
 
 export class CustomerTypeEnum{

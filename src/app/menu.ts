@@ -72,5 +72,13 @@ export const Menus: MenuModel[] = [
         isTitle : false,
         subMenus : [],
         showThisMenuJustAdmin : true
-    }
+    },
+    {
+        name: "Ürünler",
+        icon: "fa-solid fa-boxes-stacked",
+        url: "/products",
+        isTitle: false,
+        subMenus:[],
+        showThisMenuJustAdmin: true,
+    },
 ]
