@@ -80,4 +80,14 @@ export class CompaniesComponent {
     },"Güncelle")
   }
 
+  seedData(){
+    this.swal.callSwal("Seed Data Oluşturulsun mu? ","Seeed data oluşturacaksın, eminsen devam et",() => {
+      
+      this.http.get<string>("SeedData/Create",(res) =>{
+        this.swal.callToast(res);
+      })
+    },"Oluştur")    
+  }
+
+
 }

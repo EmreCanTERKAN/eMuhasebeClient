@@ -17,7 +17,7 @@ import { Component, ElementRef, ViewChild } from '@angular/core';
  export class ProductsComponent {
    products: ProductModel[] = [];
    search:string = "";  
- 
+   p: number = 1;
    @ViewChild("createModalCloseBtn") createModalCloseBtn: ElementRef<HTMLButtonElement> | undefined;
    @ViewChild("updateModalCloseBtn") updateModalCloseBtn: ElementRef<HTMLButtonElement> | undefined;
  
