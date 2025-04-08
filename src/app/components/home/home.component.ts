@@ -1,25 +1,50 @@
-import { Component } from '@angular/core';
+import { AfterViewInit, Component } from '@angular/core';
 import { SharedModule } from '../../modules/shared.module';
+import { HttpService } from '../../services/http.service';
+import { PurchaseReportModel } from '../../models/purchase-report.model';
+import { DatePipe } from '@angular/common';
 declare const Chart:any;
 
 @Component({
     selector: 'app-home',
     imports: [SharedModule],
     templateUrl: './home.component.html',
-    styleUrl: './home.component.css'
+    styleUrl: './home.component.css',
+    providers:[DatePipe]
 })
-export class HomeComponent {
+export class HomeComponent implements AfterViewInit {
+  chart: any;
+
+  constructor(
+    private http : HttpService,
+    private date : DatePipe
+  ) { }
+ngAfterViewInit(): void {
+  this.showChart();
+  this.getPurchaseReport();
+}
+
+getPurchaseReport(){
+  this.http.get<PurchaseReportModel>("Reports/PurchaseReports", (res) => {
+    this.chart.data.labels = res.dates.map(value => {
+      return this.date.transform(value, 'dd/MM/yyyy')
+    });
+    this.chart.data.datasets[0].data = res.amounts;
+
+    this.chart.update();
+  })
+}
 
 showChart(){
 const ctx = document.getElementById('myChart');
 
-  new Chart(ctx, {
-    type: 'bar',
+ this.chart =  new Chart(ctx, {
+    type: 'line',
     data: {
-      labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+      labels: [],
       datasets: [{
-        label: '# of Votes',
-        data: [12, 19, 3, 5, 2, 3],
+        label: '# Günlük Satışlar',
+        data: [],
         borderWidth: 1
       }]
     },
