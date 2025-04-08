@@ -16,6 +16,7 @@ import { CustomerDetailsComponent } from './components/customer-details/customer
 import { ProductsComponent } from './components/products/products.component';
 import { ProductDetailsComponent } from './components/product-details/product-details.component';
 import { InvoicesComponent } from './components/invoices/invoices.component';
+import { ProductProfitabilityReportsComponent } from './components/product-profitability-reports/product-profitability-reports.component';
 
 export const routes: Routes = [
     {
@@ -102,6 +103,15 @@ export const routes: Routes = [
             {
                 path: "invoices",
                 component: InvoicesComponent
+            },
+            {
+                path: "reports",
+                children:[
+                    {
+                        path: "product-profitability-reports",
+                        component: ProductProfitabilityReportsComponent
+                    }
+                ]
             }
         ]
     }
